@@ -1,0 +1,27 @@
+<h2>Gestion des Portefeuilles</h2>
+
+<!-- Formulaire pour ajouter un portefeuille -->
+<form (ngSubmit)="saveWallet()" style="margin-bottom: 20px;">
+  <label>Nom du Portefeuille:</label>
+  <input [(ngModel)]="newWallet.name" name="walletName" required placeholder="Nom du portefeuille">
+
+  <label>Solde:</label>
+  <input [(ngModel)]="newWallet.balance" name="balance" type="number" required placeholder="Solde initial">
+
+  <button type="submit">Ajouter Portefeuille</button>
+</form>
+
+<!-- Liste des portefeuilles -->
+<ul>
+  <li *ngFor="let wallet of wallets" style="margin-bottom: 10px;">
+    <div>
+      <strong>ID:</strong> {{ wallet.id }} |
+      <strong>Nom:</strong> {{ wallet.name }} |
+      <strong>Solde:</strong> {{ wallet.balance }}
+    </div>
+    <div>
+      <button (click)="updateWallet(wallet)">Modifier</button>
+      <button (click)="deleteWallet(wallet.id!)">Supprimer</button>
+    </div>
+  </li>
+</ul>

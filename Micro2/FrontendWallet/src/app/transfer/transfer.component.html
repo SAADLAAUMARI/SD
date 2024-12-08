@@ -1,0 +1,30 @@
+<h2>Transferts</h2>
+
+<!-- Formulaire d'ajout -->
+<form (ngSubmit)="saveTransfer()" style="margin-bottom: 20px;">
+  <label>Source Wallet ID:</label>
+  <input [(ngModel)]="newTransfer.walletSourceId" name="sourceWalletId" required placeholder="ID du portefeuille source">
+
+  <label>Destination Wallet ID:</label>
+  <input [(ngModel)]="newTransfer.walletDestinationId" name="destinationWalletId" required placeholder="ID du portefeuille destination">
+
+  <label>Montant:</label>
+  <input [(ngModel)]="newTransfer.montant" name="montant" type="number" required placeholder="Montant du transfert">
+
+  <button type="submit">Ajouter Transfert</button>
+</form>
+
+<!-- Liste des transferts -->
+<ul>
+  <li *ngFor="let transfer of transfers" style="margin-bottom: 10px;">
+    <div>
+      <strong>ID:</strong> {{ transfer.id }} |
+      <strong>Montant:</strong> {{ transfer.montant }} |
+      <strong>État:</strong> {{ transfer.etat }}
+    </div>
+    <div>
+      <button (click)="updateTransfer(transfer)">Modifier</button>
+      <button (click)="deleteTransfer(transfer.id!)">Supprimer</button>
+    </div>
+  </li>
+</ul>

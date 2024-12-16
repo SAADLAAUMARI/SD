@@ -5,9 +5,9 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-@FeignClient(name = "keynote-service", url = "http://localhost:8081/api/keynotes") // Remplace l'URL par celle de ton service keynote
+@FeignClient(name = "KEYNOTE-SERVICE") // Remplace l'URL par celle de ton service keynote
 public interface KeynoteClient {
 
-    @GetMapping("/{id}")
+    @GetMapping("/api/keynotes/{id}")
     Keynote getKeynoteById(@PathVariable("id") Long id);
 }
